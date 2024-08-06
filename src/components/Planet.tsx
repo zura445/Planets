@@ -7,7 +7,7 @@ function Planet() {
 
   const planet = data.find((planetObg) => planetObg.name === planetName);
 
-  return <div>{planet?.name}</div>;
+  return <div className="text-white">{planet?.name}</div>;
 }
 
 export default Planet;

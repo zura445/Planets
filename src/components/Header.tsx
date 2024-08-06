@@ -5,13 +5,17 @@ function Header() {
   return (
     <header>
       <nav>
-        <div className="flex">
-          <div className="text-lg">THE PLANETS</div>
-          <ul className="flex">
+        <div className="md:flex block justify-between pt-[22px] px-8 border-b pb-7">
+          <div className="text-lg md:block text-center text-white">
+            THE PLANETS
+          </div>
+          <ul className="hidden sm:flex gap-8 text-xs items-center">
             {data.map((planet, index) => {
               return (
-                <li key={index}>
-                  <Link to={`/${planet.name}`}>{planet.name}</Link>
+                <li className="" key={index}>
+                  <Link className="text-white" to={`/${planet.name}`}>
+                    {planet.name}
+                  </Link>
                 </li>
               );
             })}
