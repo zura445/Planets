@@ -1,5 +1,5 @@
 import Header from "./components/Header";
-import { Route, Routes } from "react-router";
+import { Route, Routes, Navigate } from "react-router";
 import Planet from "./components/Planet";
 
 function App() {
@@ -8,6 +8,7 @@ function App() {
       <div className="">
         <Header />
         <Routes>
+          <Route path="/" element={<Navigate to={"/earth"} />}></Route>
           <Route path="/:planet" element={<Planet />}></Route>
         </Routes>
       </div>
