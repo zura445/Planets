@@ -5,11 +5,13 @@ function Planet() {
   const params = useParams();
   const planetName = params.planet;
 
-  const planet = data.find((planetObg) => planetObg.name === planetName);
+  const planet = data.find(
+    (planetObg) => planetObg.name.toLowerCase() === planetName?.toLowerCase()
+  );
 
-  console.log(planetName);
+  console.log(planet);
 
-  return <div className="text-white bg-red-400">{planet?.name}</div>;
+  return <div className="text-white">{planet && planet.name}</div>;
 }
 
 export default Planet;

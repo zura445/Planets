@@ -5,7 +5,7 @@ import Planet from "./components/Planet";
 function App() {
   return (
     <>
-      <div className="">
+      <div className="bg-hero-pattern">
         <Header />
         <Routes>
           <Route path="/" element={<Navigate to={"/earth"} />}></Route>
