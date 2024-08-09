@@ -70,7 +70,7 @@ const Header: React.FC = () => {
         </div>
 
         {isOpen && (
-          <ul className="sm:hidden py-2">
+          <ul className="sm:hidden py-10">
             {data.map((planet, index) => (
               <li key={index} className="px-8 py-2">
                 <Link

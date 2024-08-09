@@ -11,7 +11,11 @@ function Planet() {
 
   console.log(planet);
 
-  return <div className="text-white">{planet && planet.name}</div>;
+  return (
+    <div className="px-8">
+      <div className="text-white">{planet && planet.name}</div>
+    </div>
+  );
 }
 
 export default Planet;
