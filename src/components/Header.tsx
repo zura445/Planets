@@ -13,9 +13,9 @@ const Header: React.FC = () => {
   return (
     <header>
       <nav>
-        <div className="flex justify-between items-center pt-[22px] px-8 border-b pb-7">
+        <div className="flex justify-between items-center pt-[22px] px-8 border-b border-gray-600 pb-7">
           <div className="text-lg text-center text-white">THE PLANETS</div>
-          <div className="sm:hidden">
+          <div className="md:hidden">
             <button
               onClick={toggleMenu}
               className="focus:outline-none bg-black"
@@ -55,7 +55,7 @@ const Header: React.FC = () => {
           </div>
 
           {/* დესკტოპის მენიუ */}
-          <ul className="hidden sm:flex lg:gap-14 gap-10 text-xs items-center">
+          <ul className="hidden md:flex lg:gap-14 gap-10 text-xs items-center">
             {data.map((planet, index) => (
               <li key={index}>
                 <Link
@@ -70,7 +70,7 @@ const Header: React.FC = () => {
         </div>
 
         {isOpen && (
-          <ul className="sm:hidden py-10">
+          <ul className="md:hidden py-10">
             {data.map((planet, index) => (
               <li
                 key={index}
