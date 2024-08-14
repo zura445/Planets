@@ -1,14 +1,18 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import data from "../data.json";
 import { useParams } from "react-router";
 
+type DeviceType = "mobile" | "tablet" | "desktop";
+type ImageType = "overview" | "structure" | "surface";
+
 function Planet() {
-  const [deviceType, setDeviceType] = useState("mobile");
+  const [deviceType, setDeviceType] = useState<DeviceType>("mobile");
+  const [imageType, setImageType] = useState<ImageType>("overview");
   const params = useParams();
   const planetName = params.planet;
 
   const planet = data.find(
-    (planetObg) => planetObg.name.toLowerCase() === planetName?.toLowerCase()
+    (planetObj) => planetObj.name.toLowerCase() === planetName?.toLowerCase()
   );
 
   useEffect(() => {
@@ -23,25 +27,76 @@ function Planet() {
     };
 
     window.addEventListener("resize", handleResize);
-    handleResize(); // პირველადი გამოძახება
+    handleResize();
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  console.log(planet);
+  useEffect(() => {
+    setImageType("overview");
+  }, [planetName]);
+
+  const getImageSource = () => {
+    switch (imageType) {
+      case "structure":
+        return planet?.images.internal;
+      case "surface":
+        return planet?.images.geology;
+      case "overview":
+      default:
+        return planet?.images.planet;
+    }
+  };
+
+  const getContent = () => {
+    switch (imageType) {
+      case "structure":
+        return planet?.structure.content;
+      case "surface":
+        return planet?.geology.content;
+      case "overview":
+      default:
+        return planet?.overview.content;
+    }
+  };
 
   return (
     <div className="px-8">
       <div className="flex md:hidden justify-between text-xs">
-        <p className="border-b-4 py-5">
-          <p>OVERVIEW</p>
+        <p
+          className={`border-b-4 py-5 cursor-pointer ${
+            imageType === "overview"
+              ? "border-blue-500 text-blue-500"
+              : "border-gray-500 text-gray-500"
+          }`}
+          onClick={() => setImageType("overview")}
+        >
+          OVERVIEW
         </p>
-        <p className="border-b-4 py-5">STRUCTURE</p>
-        <p className="border-b-4 py-5">SURPACE</p>
+        <p
+          className={`border-b-4 py-5 cursor-pointer ${
+            imageType === "structure"
+              ? "border-blue-500 text-blue-500"
+              : "border-gray-500 text-gray-500"
+          }`}
+          onClick={() => setImageType("structure")}
+        >
+          STRUCTURE
+        </p>
+        <p
+          className={`border-b-4 py-5 cursor-pointer ${
+            imageType === "surface"
+              ? "border-blue-500 text-blue-500"
+              : "border-gray-500 text-gray-500"
+          }`}
+          onClick={() => setImageType("surface")}
+        >
+          SURFACE
+        </p>
       </div>
       <div className="h-[300px] flex justify-center items-center">
         <img
-          src={planet?.images.planet}
+          src={getImageSource()}
           style={{
             width: planet?.planetSize?.[deviceType]?.["width"],
             height: planet?.planetSize?.[deviceType]?.["height"],
@@ -52,7 +107,7 @@ function Planet() {
       <div className="pb-12">
         <div className="text-center">
           <p className="text-white text-[40px]">{planet?.name}</p>
-          <p className="text-xs text-white mt-4">{planet?.overview.content}</p>
+          <p className="text-xs text-white mt-4">{getContent()}</p>
         </div>
         <div className="flex items-center justify-center mt-8 text-white">
           <p>Source :</p>
