@@ -1,13 +1,32 @@
+import React, { useState, useEffect } from "react";
 import data from "../data.json";
 import { useParams } from "react-router";
 
 function Planet() {
+  const [deviceType, setDeviceType] = useState("mobile");
   const params = useParams();
   const planetName = params.planet;
 
   const planet = data.find(
     (planetObg) => planetObg.name.toLowerCase() === planetName?.toLowerCase()
   );
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setDeviceType("mobile");
+      } else if (window.innerWidth < 1024) {
+        setDeviceType("tablet");
+      } else {
+        setDeviceType("desktop");
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize(); // პირველადი გამოძახება
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   console.log(planet);
 
@@ -24,8 +43,8 @@ function Planet() {
         <img
           src={planet?.images.planet}
           style={{
-            width: planet?.planetSize?.mobile?.["width"],
-            height: planet?.planetSize?.mobile?.["height"],
+            width: planet?.planetSize?.[deviceType]?.["width"],
+            height: planet?.planetSize?.[deviceType]?.["height"],
           }}
           alt="planet image"
         />
@@ -49,19 +68,19 @@ function Planet() {
         <div className="mt-6">
           <div className="border px-6 py-3 flex justify-between mt-2">
             <p>ROTATION TIME</p>
-            <p className="text-xl text-white">58.6 DAYS</p>
+            <p className="text-xl text-white">{planet?.rotation}</p>
           </div>
           <div className="border px-6 py-3 flex justify-between mt-2">
             <p>REVOLUTION TIME</p>
-            <p className="text-xl text-white">87.97 DAYS</p>
+            <p className="text-xl text-white">{planet?.revolution}</p>
           </div>
           <div className="border px-6 py-3 flex justify-between mt-2">
             <p>RADIUS</p>
-            <p className="text-xl text-white">2,439.7 KM</p>
+            <p className="text-xl text-white">{planet?.radius}</p>
           </div>
           <div className="border px-6 py-3 flex justify-between mt-2">
             <p>AVERAGE TEMP.</p>
-            <p className="text-xl text-white">430°C</p>
+            <p className="text-xl text-white">{planet?.temperature}</p>
           </div>
         </div>
       </div>
