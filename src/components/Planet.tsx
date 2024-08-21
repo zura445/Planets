@@ -61,7 +61,7 @@ function Planet() {
   };
 
   return (
-    <div className="px-8">
+    <div className="px-8 block md:flex mt-[126px]">
       <div className="flex md:hidden justify-between text-xs">
         <p
           className={`border-b-4 py-5 cursor-pointer ${
@@ -94,7 +94,7 @@ function Planet() {
           SURFACE
         </p>
       </div>
-      <div className="h-[300px] flex justify-center items-center">
+      <div className="h-[300px] m-auto flex justify-center items-center ">
         <img
           src={getImageSource()}
           style={{
@@ -104,9 +104,9 @@ function Planet() {
           alt="planet image"
         />
       </div>
-      <div className="pb-12 block md:flex">
-        <div className="md:w-full">
-          <div className="text-center">
+      <div className="pb-12 block md:m-auto md:w-full md:max-w-[339px] lg:max-w-[350px]">
+        <div className="">
+          <div className="">
             <p className="text-white text-[40px]">{planet?.name}</p>
             <p className="text-xs text-white mt-4">{getContent()}</p>
           </div>
@@ -124,7 +124,7 @@ function Planet() {
             </div>
           </div>
         </div>
-        <div className="mt-6 md:ml-[70px] md:w-full">
+        <div className="mt-6">
           <div className="border px-6 py-3 flex justify-between mt-2">
             <p>ROTATION TIME</p>
             <p className="text-xl text-white">{planet?.rotation}</p>
