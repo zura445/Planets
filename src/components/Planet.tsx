@@ -61,8 +61,8 @@ function Planet() {
   };
 
   return (
-    <div className="px-8 block md:flex mt-[126px]">
-      <div className="flex justify-between text-xs">
+    <>
+      <div className="flex justify-between text-xs px-8">
         <p
           className={`border-b-4 py-5 cursor-pointer ${
             imageType === "overview"
@@ -94,56 +94,62 @@ function Planet() {
           SURFACE
         </p>
       </div>
-      <div className="h-[300px] m-auto flex justify-center items-center ">
-        <img
-          src={getImageSource()}
-          style={{
-            width: planet?.planetSize?.[deviceType]?.["width"],
-            height: planet?.planetSize?.[deviceType]?.["height"],
-          }}
-          alt="planet image"
-        />
-      </div>
-      <div className="pb-12 block md:m-auto md:w-full md:max-w-[339px] lg:max-w-[350px]">
-        <div className="">
+      <div className="px-8 block md:flex mt-[126px]">
+        <div className="h-[300px] m-auto flex justify-center items-center ">
+          <img
+            src={getImageSource()}
+            style={{
+              width: planet?.planetSize?.[deviceType]?.["width"],
+              height: planet?.planetSize?.[deviceType]?.["height"],
+            }}
+            alt="planet image"
+          />
+        </div>
+        <div className="pb-12 block md:m-auto md:w-full md:max-w-[339px] lg:max-w-[350px]">
           <div className="">
-            <p className="text-white text-[40px]">{planet?.name}</p>
-            <p className="text-xs text-white mt-4">{getContent()}</p>
+            <div className="">
+              <p className="text-white text-[40px]">{planet?.name}</p>
+              <p className="text-xs text-white mt-4">{getContent()}</p>
+            </div>
+            <div className="flex items-center justify-center mt-8 text-white">
+              <div className="flex items-center">
+                <p>Source :</p>
+                <a
+                  href={planet?.overview.source}
+                  target="blank"
+                  className="ml-1"
+                >
+                  Wikipedia
+                </a>
+                <img
+                  src={planet?.overview.linkErrow}
+                  className="w-3 h-3 ml-1"
+                  alt="source link"
+                />
+              </div>
+            </div>
           </div>
-          <div className="flex items-center justify-center mt-8 text-white">
-            <div className="flex items-center">
-              <p>Source :</p>
-              <a href={planet?.overview.source} target="blank" className="ml-1">
-                Wikipedia
-              </a>
-              <img
-                src={planet?.overview.linkErrow}
-                className="w-3 h-3 ml-1"
-                alt="source link"
-              />
+          <div className="mt-6">
+            <div className="border px-6 py-3 flex justify-between mt-2">
+              <p>ROTATION TIME</p>
+              <p className="text-xl text-white">{planet?.rotation}</p>
+            </div>
+            <div className="border px-6 py-3 flex justify-between mt-2">
+              <p>REVOLUTION TIME</p>
+              <p className="text-xl text-white">{planet?.revolution}</p>
+            </div>
+            <div className="border px-6 py-3 flex justify-between mt-2">
+              <p>RADIUS</p>
+              <p className="text-xl text-white">{planet?.radius}</p>
+            </div>
+            <div className="border px-6 py-3 flex justify-between mt-2">
+              <p>AVERAGE TEMP.</p>
+              <p className="text-xl text-white">{planet?.temperature}</p>
             </div>
           </div>
         </div>
-        <div className="mt-6">
-          <div className="border px-6 py-3 flex justify-between mt-2">
-            <p>ROTATION TIME</p>
-            <p className="text-xl text-white">{planet?.rotation}</p>
-          </div>
-          <div className="border px-6 py-3 flex justify-between mt-2">
-            <p>REVOLUTION TIME</p>
-            <p className="text-xl text-white">{planet?.revolution}</p>
-          </div>
-          <div className="border px-6 py-3 flex justify-between mt-2">
-            <p>RADIUS</p>
-            <p className="text-xl text-white">{planet?.radius}</p>
-          </div>
-          <div className="border px-6 py-3 flex justify-between mt-2">
-            <p>AVERAGE TEMP.</p>
-            <p className="text-xl text-white">{planet?.temperature}</p>
-          </div>
-        </div>
       </div>
-    </div>
+    </>
   );
 }
 
