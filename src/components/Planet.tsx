@@ -62,7 +62,7 @@ function Planet() {
 
   return (
     <div className="px-8 block md:flex mt-[126px]">
-      <div className="flex md:hidden justify-between text-xs">
+      <div className="flex justify-between text-xs">
         <p
           className={`border-b-4 py-5 cursor-pointer ${
             imageType === "overview"
