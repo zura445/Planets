@@ -151,30 +151,30 @@ function Planet() {
       </div>
       <div className="hidden md:flex justify-between text-xs px-8">
         <p
-          className={`border-b-4 py-5 cursor-pointer ${
+          className={`py-5 cursor-pointer ${
             imageType === "overview"
-              ? "border-blue-500 text-blue-500"
-              : "border-gray-500 text-gray-500"
+              ? "border-[#D83A34] text-[#D83A34]"
+              : "text-gray-500"
           }`}
           onClick={() => setImageType("overview")}
         >
           OVERVIEW
         </p>
         <p
-          className={`border-b-4 py-5 cursor-pointer ${
+          className={`py-5 cursor-pointer ${
             imageType === "structure"
-              ? "border-blue-500 text-blue-500"
-              : "border-gray-500 text-gray-500"
+              ? "border-[#D83A34] text-[#D83A34]"
+              : "text-gray-500"
           }`}
           onClick={() => setImageType("structure")}
         >
           STRUCTURE
         </p>
         <p
-          className={`border-b-4 py-5 cursor-pointer ${
+          className={`py-5 cursor-pointer ${
             imageType === "surface"
-              ? "border-blue-500 text-blue-500"
-              : "border-gray-500 text-gray-500"
+              ? "border-[#D83A34] text-[#D83A34]"
+              : "text-gray-500"
           }`}
           onClick={() => setImageType("surface")}
         >
