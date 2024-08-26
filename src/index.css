@@ -32,6 +32,7 @@ body {
   font-family: "Antonio", sans-serif;
   background-color: black;
   background-image: url("/images/background-stars.svg");
+  min-height: 100vh;
 }
 
 h1 {

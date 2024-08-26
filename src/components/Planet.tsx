@@ -95,7 +95,7 @@ function Planet() {
         </p>
       </div>
       <div className="px-8 block mt-[126px]">
-        <div className="h-[300px] m-auto flex justify-center items-center ">
+        <div className="m-auto flex justify-center items-center ">
           <img
             src={getImageSource()}
             style={{
