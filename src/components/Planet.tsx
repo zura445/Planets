@@ -129,57 +129,57 @@ function Planet() {
               </div>
             </div>
           </div>
-          <div className="mt-6 md:mt-0 w-full">
-            <div className="border px-6 py-3 flex justify-between mt-2">
-              <p>ROTATION TIME</p>
-              <p className="text-xl text-white">{planet?.rotation}</p>
-            </div>
-            <div className="border px-6 py-3 flex justify-between mt-2">
-              <p>REVOLUTION TIME</p>
-              <p className="text-xl text-white">{planet?.revolution}</p>
-            </div>
-            <div className="border px-6 py-3 flex justify-between mt-2">
-              <p>RADIUS</p>
-              <p className="text-xl text-white">{planet?.radius}</p>
-            </div>
-            <div className="border px-6 py-3 flex justify-between mt-2">
-              <p>AVERAGE TEMP.</p>
-              <p className="text-xl text-white">{planet?.temperature}</p>
-            </div>
+          <div className="hidden md:block w-full justify-between text-xs px-8 md:ml-10 lg:ml-20">
+            <p
+              className={`py-5 cursor-pointer border text-white ${
+                imageType === "overview"
+                  ? "border-[#D83A34] bg-[#D83A34]"
+                  : "text-gray-500"
+              }`}
+              onClick={() => setImageType("overview")}
+            >
+              <span className="px-7">01</span> OVERVIEW
+            </p>
+            <p
+              className={`py-5 cursor-pointer border text-white mt-4 ${
+                imageType === "structure"
+                  ? "border-[#D83A34] bg-[#D83A34]"
+                  : "text-gray-500"
+              }`}
+              onClick={() => setImageType("structure")}
+            >
+              <span className="px-7">02</span> ITERNAL STRUCTURE
+            </p>
+            <p
+              className={`py-5 cursor-pointer border text-white mt-4 ${
+                imageType === "surface"
+                  ? "border-[#D83A34] bg-[#D83A34]"
+                  : "text-gray-500"
+              }`}
+              onClick={() => setImageType("surface")}
+            >
+              <span className="px-7">03</span> SURFACE GEOLOGY
+            </p>
           </div>
         </div>
       </div>
-      <div className="hidden md:flex justify-between text-xs px-8">
-        <p
-          className={`py-5 cursor-pointer ${
-            imageType === "overview"
-              ? "border-[#D83A34] text-[#D83A34]"
-              : "text-gray-500"
-          }`}
-          onClick={() => setImageType("overview")}
-        >
-          OVERVIEW
-        </p>
-        <p
-          className={`py-5 cursor-pointer ${
-            imageType === "structure"
-              ? "border-[#D83A34] text-[#D83A34]"
-              : "text-gray-500"
-          }`}
-          onClick={() => setImageType("structure")}
-        >
-          STRUCTURE
-        </p>
-        <p
-          className={`py-5 cursor-pointer ${
-            imageType === "surface"
-              ? "border-[#D83A34] text-[#D83A34]"
-              : "text-gray-500"
-          }`}
-          onClick={() => setImageType("surface")}
-        >
-          SURFACE
-        </p>
+      <div className="mt-6 md:mt-0 w-full block md:flex md:justify-around">
+        <div className="border px-6 py-3 flex md:block justify-between mt-2 lg:w-[225px]">
+          <p>ROTATION TIME</p>
+          <p className="text-xl text-white md:mt-2">{planet?.rotation}</p>
+        </div>
+        <div className="border px-6 py-3 flex md:block justify-between mt-2 lg:w-[225px]">
+          <p>REVOLUTION TIME</p>
+          <p className="text-xl text-white md:mt-2">{planet?.revolution}</p>
+        </div>
+        <div className="border px-6 py-3 flex md:block justify-between mt-2 lg:w-[225px]">
+          <p>RADIUS</p>
+          <p className="text-xl text-white md:mt-2">{planet?.radius}</p>
+        </div>
+        <div className="border px-6 py-3 flex md:block justify-between mt-2 lg:w-[225px]">
+          <p>AVERAGE TEMP.</p>
+          <p className="text-xl text-white md:mt-2">{planet?.temperature}</p>
+        </div>
       </div>
     </>
   );
