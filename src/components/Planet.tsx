@@ -132,30 +132,42 @@ function Planet() {
             </div>
             <div className="hidden md:block md:ml-[69px] lg:ml-0 w-full justify-between text-xs mt-10">
               <p
-                className={`py-5 cursor-pointer border text-white ${
-                  imageType === "overview"
-                    ? "border-[#D83A34] bg-[#D83A34]"
-                    : "text-gray-500"
+                style={{
+                  backgroundColor:
+                    imageType === "overview"
+                      ? planet?.style?.["background-color"]
+                      : "",
+                }}
+                className={`py-5 cursor-pointer text-white ${
+                  imageType === "overview" ? "" : "text-gray-500"
                 }`}
                 onClick={() => setImageType("overview")}
               >
                 <span className="px-7">01</span> OVERVIEW
               </p>
               <p
-                className={`py-5 cursor-pointer border text-white mt-4 ${
-                  imageType === "structure"
-                    ? "border-[#D83A34] bg-[#D83A34]"
-                    : "text-gray-500"
+                style={{
+                  backgroundColor:
+                    imageType === "structure"
+                      ? planet?.style?.["background-color"]
+                      : "",
+                }}
+                className={`py-5 cursor-pointer text-white mt-4 ${
+                  imageType === "structure" ? "" : "text-gray-500"
                 }`}
                 onClick={() => setImageType("structure")}
               >
-                <span className="px-7">02</span> ITERNAL STRUCTURE
+                <span className="px-7">02</span> INTERNAL STRUCTURE
               </p>
               <p
-                className={`py-5 cursor-pointer border text-white mt-4 ${
-                  imageType === "surface"
-                    ? "border-[#D83A34] bg-[#D83A34]"
-                    : "text-gray-500"
+                style={{
+                  backgroundColor:
+                    imageType === "surface"
+                      ? planet?.style?.["background-color"]
+                      : "",
+                }}
+                className={`py-5 cursor-pointer text-white mt-4 ${
+                  imageType === "surface" ? "" : "text-gray-500"
                 }`}
                 onClick={() => setImageType("surface")}
               >
