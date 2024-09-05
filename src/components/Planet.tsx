@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import data from "../data.json";
 import { useParams } from "react-router";
 
+//ამის მაგივრად უნდა გამოვიყენო usemediaquerry
 type DeviceType = "mobile" | "tablet" | "desktop";
 type ImageType = "overview" | "structure" | "surface";
 
@@ -96,15 +97,41 @@ function Planet() {
       </div>
       <div className="lg:px-[165px]">
         <div className="px-8 block mt-[126px] lg:flex justify-between">
-          <div className="lg:w-[50%] w-full flex justify-center items-center ">
-            <img
-              src={getImageSource()}
-              style={{
-                width: planet?.planetSize?.[deviceType]?.["width"],
-                height: planet?.planetSize?.[deviceType]?.["height"],
-              }}
-              alt="planet image"
-            />
+          <div className="lg:w-[50%] w-full flex justify-center items-center">
+            {imageType === "surface" ? (
+              <div className="relative">
+                <img
+                  src={planet?.images.planet}
+                  style={{
+                    width: planet?.planetSize?.[deviceType]?.["width"],
+                    height: planet?.planetSize?.[deviceType]?.["height"],
+                  }}
+                  alt="planet image"
+                />
+                {/* აქაც მაგივრად უნდა გამოვიყენო usemediaquerry */}
+                <img
+                  src={planet?.images.geology}
+                  style={{
+                    width: "163px",
+                    height: "199px",
+                    position: "absolute",
+                    bottom: "-30px",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                  }}
+                  alt="geology image"
+                />
+              </div>
+            ) : (
+              <img
+                src={getImageSource()}
+                style={{
+                  width: planet?.planetSize?.[deviceType]?.["width"],
+                  height: planet?.planetSize?.[deviceType]?.["height"],
+                }}
+                alt="planet image"
+              />
+            )}
           </div>
           <div className="pb-12 block md:flex text-center md:text-left w-full lg:block lg:items-end lg:max-w-[350px]">
             <div className="">
@@ -189,7 +216,7 @@ function Planet() {
             />
           </div>
         </div>
-        <div className="mt-7 w-full block md:flex md:justify-between px-8">
+        <div className="mt-7 w-full block md:flex md:justify-between px-8 gap-2">
           <div className="border px-6 py-3 flex md:block justify-between mt-2 lg:w-[225px]">
             <p>ROTATION TIME</p>
             <p className="text-xl text-white md:mt-2">{planet?.rotation}</p>
